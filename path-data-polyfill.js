@@ -443,16 +443,17 @@ if (!SVGPathElement.prototype.getPathData || !SVGPathElement.prototype.setPathDa
 
       var df = f2 - f1;
 
-      if (Math.abs(df) > (Math.PI * 120 / 180)) {
+      var arcThreshold = 90;
+      if (Math.abs(df) > (Math.PI * arcThreshold / 180)) {
         var f2old = f2;
         var x2old = x2;
         var y2old = y2;
 
         if (sweepFlag && f2 > f1) {
-          f2 = f1 + (Math.PI * 120 / 180) * (1);
+          f2 = f1 + (Math.PI * arcThreshold / 180) * (1);
         }
         else {
-          f2 = f1 + (Math.PI * 120 / 180) * (-1);
+          f2 = f1 + (Math.PI * arcThreshold / 180) * (-1);
         }
 
         x2 = cx + r1 * Math.cos(f2);
